@@ -70,16 +70,16 @@ namespace HomeWork4_6_5 {
                     lvi.SubItems.Add(m.CanWrite ? "Так" : "Ні");
                     lvi.Group = grpProps;
                 }
-                var fields = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 foreach (var m in fields) {
                     var lvi = lvMembers.Items.Add(m.Name);
-                    lvi.SubItems.Add(m.CanWrite ? "Так" : "Ні");
+                    lvi.SubItems.Add(m.IsPublic ? "Так" : "Ні");
                     lvi.Group = grpFields;
                 }
-                var events = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                var events = type.GetEvents(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 foreach (var m in events) {
                     var lvi = lvMembers.Items.Add(m.Name);
-                    lvi.SubItems.Add(m.CanWrite ? "Так" : "Ні");
+                    //lvi.SubItems.Add(m.CanWrite ? "Так" : "Ні");
                     lvi.Group = grpEvents;
                 }
                 lvMembers.EndUpdate();
